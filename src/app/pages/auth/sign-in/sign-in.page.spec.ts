@@ -1,8 +1,9 @@
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
-import { FormBuilder } from '@angular/forms';
+import { FormBuilder, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { By } from '@angular/platform-browser';
 import { IonicModule } from '@ionic/angular';
 import { TranslateModule } from '@ngx-translate/core';
+import { SharedModule } from 'src/app/shared/shared.module';
 import { SignInPage } from './sign-in.page';
 
 describe('SignInPage', () => {
@@ -13,7 +14,13 @@ describe('SignInPage', () => {
     waitForAsync(() => {
       TestBed.configureTestingModule({
         declarations: [SignInPage],
-        imports: [IonicModule.forRoot(), TranslateModule.forRoot()],
+        imports: [
+          IonicModule.forRoot(),
+          TranslateModule.forRoot(),
+          FormsModule,
+          ReactiveFormsModule,
+          SharedModule,
+        ],
         providers: [{ provide: FormBuilder }],
       }).compileComponents();
 
