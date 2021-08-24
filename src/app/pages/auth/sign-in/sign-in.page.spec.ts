@@ -29,4 +29,8 @@ describe('SignInPage', () => {
   it('reminder toggle default value is false', () => {
     expect(component.isRemindEnabled).toBeFalsy();
   });
+
+  it('form invalid when empty', () => {
+    expect(component.signInForm.invalid).toBeTruthy();
+  });
 });
