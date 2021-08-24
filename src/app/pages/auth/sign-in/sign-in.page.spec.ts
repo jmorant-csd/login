@@ -1,5 +1,6 @@
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { FormBuilder } from '@angular/forms';
+import { By } from '@angular/platform-browser';
 import { IonicModule } from '@ionic/angular';
 import { TranslateModule } from '@ngx-translate/core';
 import { SignInPage } from './sign-in.page';
@@ -55,6 +56,16 @@ describe('SignInPage', () => {
   it('isSubmitButtonClicked should be true when onSubmit()', () => {
     component.onSubmit();
     expect(component.isSubmitButtonClicked).toBeTruthy();
+  });
+
+  it('should show field error message when form is invalid', () => {
+    component.onSubmit();
+    fixture.detectChanges();
+
+    const elementClass = '.invalid-input';
+    const elementNode = fixture.debugElement.query(By.css(elementClass));
+
+    expect(elementNode).not.toBeNull();
   });
 
   it('console.log should be called when form is valid', () => {
