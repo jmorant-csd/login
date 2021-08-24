@@ -73,4 +73,13 @@ describe('SignInPage', () => {
     errors = password.errors || {};
     expect(errors.minlength).toBeFalsy();
   });
+
+  it('form valid when fields filled (and valid)', () => {
+    const email = component.signInForm.get('email');
+    const password = component.signInForm.get('password');
+    email.setValue('test@test.com');
+    password.setValue('test123');
+
+    expect(component.signInForm.valid).toBeTruthy();
+  });
 });
