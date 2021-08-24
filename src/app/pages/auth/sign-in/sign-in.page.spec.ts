@@ -84,4 +84,9 @@ describe('SignInPage', () => {
 
     expect(component.signInForm.valid).toBeTruthy();
   });
+
+  it('isSubmitButtonClicked should be true when onSubmit()', () => {
+    component.onSubmit();
+    expect(component.isSubmitButtonClicked).toBeTruthy();
+  });
 });
