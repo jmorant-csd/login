@@ -37,12 +37,18 @@ describe('SignInPage', () => {
     expect(component.signInForm.invalid).toBeTruthy();
   });
 
-  it('form valid when fields filled (and valid)', () => {
+  it('form is valid when email and password fields are filled (and valid)', () => {
     const email = component.signInForm.get('email');
+    const validEmail = 'test@test.com';
     const password = component.signInForm.get('password');
-    email.setValue('test@test.com');
-    password.setValue('test123');
+    const invalidPassword = 'test';
+    const validPassword = 'test1';
 
+    email.setValue(validEmail);
+    password.setValue(invalidPassword);
+    expect(component.signInForm.valid).toBeFalsy();
+
+    password.setValue(validPassword);
     expect(component.signInForm.valid).toBeTruthy();
   });
 
