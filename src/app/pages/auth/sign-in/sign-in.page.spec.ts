@@ -60,8 +60,11 @@ describe('SignInPage', () => {
   it('console.log should be called when form is valid', () => {
     const email = component.signInForm.get('email');
     const password = component.signInForm.get('password');
-    email.setValue('test@test.com');
-    password.setValue('test123');
+    const validEmail = 'test@test.com';
+    const validPassword = 'test1';
+
+    email.setValue(validEmail);
+    password.setValue(validPassword);
 
     component.onSubmit();
     expect(console.log).toHaveBeenCalled();
