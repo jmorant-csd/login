@@ -19,6 +19,7 @@ describe('SignInPage', () => {
       fixture = TestBed.createComponent(SignInPage);
       component = fixture.componentInstance;
       fixture.detectChanges();
+      spyOn(console, 'log');
     })
   );
 
@@ -88,5 +89,15 @@ describe('SignInPage', () => {
   it('isSubmitButtonClicked should be true when onSubmit()', () => {
     component.onSubmit();
     expect(component.isSubmitButtonClicked).toBeTruthy();
+  });
+
+  it('console.log should be called when form is valid', () => {
+    const email = component.signInForm.get('email');
+    const password = component.signInForm.get('password');
+    email.setValue('test@test.com');
+    password.setValue('test123');
+
+    component.onSubmit();
+    expect(console.log).toHaveBeenCalled();
   });
 });
