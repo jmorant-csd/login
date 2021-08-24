@@ -1,7 +1,8 @@
-import { AbstractControl, ValidatorFn } from '@angular/forms';
+import { AbstractControl, ValidationErrors, ValidatorFn } from '@angular/forms';
 
-export const emailValidator = (): ValidatorFn =>
-  (control: AbstractControl): { [key: string]: any } | null => {
+export const emailValidator =
+  (): ValidatorFn =>
+  (control: AbstractControl): ValidationErrors | null => {
     const value = control.value;
     if (!value) {
       return null;
@@ -13,4 +14,4 @@ export const emailValidator = (): ValidatorFn =>
     );
     const isValid = emailRegExp.test(control.value);
     return isValid ? null : { email: true };
-};
+  };
