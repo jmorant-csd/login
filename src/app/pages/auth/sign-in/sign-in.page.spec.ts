@@ -37,26 +37,6 @@ describe('SignInPage', () => {
     expect(component.signInForm.invalid).toBeTruthy();
   });
 
-  it('email field validation', () => {
-    const email = component.signInForm.get('email');
-    expect(email.valid).toBeFalsy();
-
-    let errors = email.errors || {};
-    expect(errors.required).toBeTruthy();
-
-    email.setValue('test');
-    errors = email.errors || {};
-    expect(errors.email).toBeTruthy();
-
-    email.setValue('test@test');
-    errors = email.errors || {};
-    expect(errors.email).toBeTruthy();
-
-    email.setValue('test@test.com');
-    errors = email.errors || {};
-    expect(errors.email).toBeFalsy();
-  });
-
   it('password field validation', () => {
     const password = component.signInForm.get('password');
     expect(password.valid).toBeFalsy();
