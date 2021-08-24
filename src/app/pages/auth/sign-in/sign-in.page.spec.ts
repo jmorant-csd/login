@@ -25,4 +25,8 @@ describe('SignInPage', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  it('reminder toggle default value is false', () => {
+    expect(component.isRemindEnabled).toBeFalsy();
+  });
 });
