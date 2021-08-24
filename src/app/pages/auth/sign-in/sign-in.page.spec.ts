@@ -53,4 +53,24 @@ describe('SignInPage', () => {
     errors = email.errors || {};
     expect(errors.email).toBeFalsy();
   });
+
+  it('password field validation', () => {
+    const password = component.signInForm.get('password');
+    expect(password.valid).toBeFalsy();
+
+    let errors = password.errors || {};
+    expect(errors.required).toBeTruthy();
+
+    password.setValue('test');
+    errors = password.errors || {};
+    expect(errors.minlength).toBeTruthy();
+
+    password.setValue('test1');
+    errors = password.errors || {};
+    expect(errors.minlength).toBeFalsy();
+
+    password.setValue('test123');
+    errors = password.errors || {};
+    expect(errors.minlength).toBeFalsy();
+  });
 });
