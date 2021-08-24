@@ -1,1 +1,9 @@
-{}
+{
+  "SIGN_IN": {
+    "TITLE": "Prueba técnica",
+    "EMAIL_LBL": "Email",
+    "PASSWORD_LBL": "Contraseña",
+    "REMEMBER_LBL": "Recordar",
+    "SUBMIT_BTN": "Acceder"
+  }
+}

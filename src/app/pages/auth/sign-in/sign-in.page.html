@@ -1,9 +1,38 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-title>sign-in</ion-title>
-  </ion-toolbar>
-</ion-header>
-
 <ion-content>
+  <div class="main-container">
+    <div class="container">
+      <img class="logo" src="/assets/logo.jpg" alt="logo">
 
+      <h4 class="title">{{ 'SIGN_IN.TITLE' | translate }}</h4>
+
+      <div class="form">
+        <ion-item class="email-item" mode="md">
+          <ion-icon name="person-outline"></ion-icon>
+          <ion-label>{{ 'SIGN_IN.EMAIL_LBL' | translate }}</ion-label>
+          <ion-input></ion-input>
+        </ion-item>
+
+        <ion-item class="password-item" mode="md">
+          <ion-icon name="lock-closed-outline"></ion-icon>
+          <ion-label>{{ 'SIGN_IN.PASSWORD_LBL' | translate }}</ion-label>
+          <ion-input></ion-input>
+        </ion-item>
+
+        <ion-item class="toggle-item" lines="none" mode="md">
+          <ion-label>{{ 'SIGN_IN.REMEMBER_LBL' | translate }}</ion-label>
+          <ion-toggle mode="md" slot="end"></ion-toggle>
+        </ion-item>
+
+        <ion-item class="submit-button-mobile" button color="primary" detail="false" expand="full">
+          <ion-label class="ion-text-center">{{ 'SIGN_IN.SUBMIT_BTN' | translate }}</ion-label>
+        </ion-item>
+
+        <div class="submit-button-desktop">
+          <ion-button fill="outline" shape="round">
+            {{ 'SIGN_IN.SUBMIT_BTN' | translate }}
+          </ion-button>
+        </div>
+      </div>
+    </div>
+  </div>
 </ion-content>
