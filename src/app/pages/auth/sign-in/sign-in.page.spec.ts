@@ -34,10 +34,6 @@ describe('SignInPage', () => {
     expect(component.signInForm).toBeDefined();
   });
 
-  it('form invalid when empty', () => {
-    expect(component.signInForm.invalid).toBeTruthy();
-  });
-
   it('form is valid when email and password fields are filled (and valid)', () => {
     const email = component.signInForm.get('email');
     const validEmail = 'test@test.com';
