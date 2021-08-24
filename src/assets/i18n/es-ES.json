@@ -2,5 +2,10 @@
   "COMMON": {
     "ACCEPT": "Aceptar",
     "CANCEL": "Cancelar"
+  },
+  "ERRORS": {
+    "REQUIRED": "Este campo es obligatorio",
+    "EMAIL": "El email no tiene el formato adecuado",
+    "MIN_LENGTH": "Este campo debe tener, al menos, {{ requiredLength }} caracteres"
   }
 }
