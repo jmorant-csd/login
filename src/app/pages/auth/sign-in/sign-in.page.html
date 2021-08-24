@@ -5,34 +5,48 @@
 
       <h4 class="title">{{ 'SIGN_IN.TITLE' | translate }}</h4>
 
-      <div class="form">
+      <form class="form" [formGroup]="signInForm" (ngSubmit)="onSubmit()">
         <ion-item class="email-item" mode="md">
           <ion-icon name="person-outline"></ion-icon>
           <ion-label>{{ 'SIGN_IN.EMAIL_LBL' | translate }}</ion-label>
-          <ion-input></ion-input>
+          <ion-input formControlName="email" type="email" inputmode="email"></ion-input>
         </ion-item>
+        <div class="invalid-input">
+          <app-invalid-input [control]="signInForm.get('email')"
+                             [isSubmitButtonClicked]="isSubmitButtonClicked">
+          </app-invalid-input>
+        </div>
 
         <ion-item class="password-item" mode="md">
           <ion-icon name="lock-closed-outline"></ion-icon>
           <ion-label>{{ 'SIGN_IN.PASSWORD_LBL' | translate }}</ion-label>
-          <ion-input></ion-input>
+          <ion-input formControlName="password" type="password" inputmode="text"></ion-input>
         </ion-item>
+        <div class="invalid-input">
+          <app-invalid-input [control]="signInForm.get('password')"
+                             [isSubmitButtonClicked]="isSubmitButtonClicked">
+          </app-invalid-input>
+        </div>
 
         <ion-item class="toggle-item" lines="none" mode="md">
-          <ion-label>{{ 'SIGN_IN.REMEMBER_LBL' | translate }}</ion-label>
-          <ion-toggle mode="md" slot="end"></ion-toggle>
+          <ion-label>{{ 'SIGN_IN.REMIND_LBL' | translate }}</ion-label>
+          <ion-toggle mode="md" slot="end"
+                      [(ngModel)]="isRemindEnabled" [ngModelOptions]="{standalone: true}">
+          </ion-toggle>
         </ion-item>
 
-        <ion-item class="submit-button-mobile" button color="primary" detail="false" expand="full">
-          <ion-label class="ion-text-center">{{ 'SIGN_IN.SUBMIT_BTN' | translate }}</ion-label>
-        </ion-item>
-
-        <div class="submit-button-desktop">
-          <ion-button fill="outline" shape="round">
+        <div class="submit-button-mobile">
+          <ion-button class="ion-no-margin" mode="md" expand="full" type="submit">
             {{ 'SIGN_IN.SUBMIT_BTN' | translate }}
           </ion-button>
         </div>
-      </div>
+
+        <div class="submit-button-desktop">
+          <ion-button fill="outline" mode="md" shape="round" type="submit">
+            {{ 'SIGN_IN.SUBMIT_BTN' | translate }}
+          </ion-button>
+        </div>
+      </form>
     </div>
   </div>
 </ion-content>

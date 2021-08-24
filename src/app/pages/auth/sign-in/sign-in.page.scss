@@ -32,7 +32,8 @@ ion-content {
 
         .email-item,
         .password-item,
-        .toggle-item {
+        .toggle-item,
+        .invalid-input {
           padding: 0 16px;
         }
 
@@ -58,6 +59,14 @@ ion-content {
         .toggle-item ion-toggle {
           --background: rgb(230, 230, 230);
           --handle-background: rgb(190, 190, 190);
+        }
+
+        .submit-button-desktop ion-button,
+        .submit-button-mobile ion-button {
+          --padding-top: 25px;
+          --padding-bottom: 25px;
+          font-size: 1rem;
+          text-transform: capitalize;
         }
       }
     }
@@ -95,7 +104,6 @@ ion-content {
               --padding-end: 40px;
               --padding-top: 18px;
               --padding-bottom: 18px;
-              text-transform: capitalize;
               font-size: 1.1rem;
             }
           }

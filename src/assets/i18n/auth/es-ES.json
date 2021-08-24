@@ -3,7 +3,7 @@
     "TITLE": "Prueba técnica",
     "EMAIL_LBL": "Email",
     "PASSWORD_LBL": "Contraseña",
-    "REMEMBER_LBL": "Recordar",
+    "REMIND_LBL": "Recordar",
     "SUBMIT_BTN": "Acceder"
   }
 }
