@@ -1,4 +1,4 @@
-<div *ngIf="isSubmitButtonClicked && control?.errors">
+<div *ngIf="control?.errors">
   <span *ngIf="control.errors.required">{{ 'ERRORS.REQUIRED' | translate }}</span>
   <span *ngIf="control.errors.email">{{ 'ERRORS.EMAIL' | translate }}</span>
   <span *ngIf="control.errors.minlength">

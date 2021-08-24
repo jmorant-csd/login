@@ -10,8 +10,5 @@ export class InvalidInputComponent {
   @Input()
   control: AbstractControl;
 
-  @Input()
-  isSubmitButtonClicked = false;
-
   constructor() {}
 }

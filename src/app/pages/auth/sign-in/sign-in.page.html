@@ -11,10 +11,8 @@
           <ion-label>{{ 'SIGN_IN.EMAIL_LBL' | translate }}</ion-label>
           <ion-input formControlName="email" type="email" inputmode="email"></ion-input>
         </ion-item>
-        <div class="invalid-input">
-          <app-invalid-input [control]="signInForm.get('email')"
-                             [isSubmitButtonClicked]="isSubmitButtonClicked">
-          </app-invalid-input>
+        <div *ngIf="isSubmitButtonClicked" class="invalid-input">
+          <app-invalid-input [control]="signInForm.get('email')"></app-invalid-input>
         </div>
 
         <ion-item class="password-item" mode="md">
@@ -22,10 +20,8 @@
           <ion-label>{{ 'SIGN_IN.PASSWORD_LBL' | translate }}</ion-label>
           <ion-input formControlName="password" type="password" inputmode="text"></ion-input>
         </ion-item>
-        <div class="invalid-input">
-          <app-invalid-input [control]="signInForm.get('password')"
-                             [isSubmitButtonClicked]="isSubmitButtonClicked">
-          </app-invalid-input>
+        <div *ngIf="isSubmitButtonClicked" class="invalid-input">
+          <app-invalid-input [control]="signInForm.get('password')"></app-invalid-input>
         </div>
 
         <ion-item class="toggle-item" lines="none" mode="md">
