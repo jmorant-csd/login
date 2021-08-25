@@ -3,15 +3,19 @@ import { FormBuilder, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { By } from '@angular/platform-browser';
 import { IonicModule } from '@ionic/angular';
 import { TranslateModule } from '@ngx-translate/core';
+import { AuthService } from 'src/app/core/services/http/auth.service';
 import { SharedModule } from 'src/app/shared/shared.module';
 import { SignInPage } from './sign-in.page';
 
 describe('SignInPage', () => {
   let component: SignInPage;
   let fixture: ComponentFixture<SignInPage>;
+  let authServiceSpy: jasmine.SpyObj<AuthService>;
 
   beforeEach(
     waitForAsync(() => {
+      const mockAuthService = jasmine.createSpyObj('AuthService', ['signIn']);
+
       TestBed.configureTestingModule({
         declarations: [SignInPage],
         imports: [
@@ -21,13 +25,19 @@ describe('SignInPage', () => {
           ReactiveFormsModule,
           SharedModule,
         ],
-        providers: [{ provide: FormBuilder }],
+        providers: [
+          { provide: FormBuilder },
+          {
+            provide: AuthService,
+            useValue: mockAuthService,
+          },
+        ],
       }).compileComponents();
 
       fixture = TestBed.createComponent(SignInPage);
       component = fixture.componentInstance;
+      authServiceSpy = TestBed.inject(AuthService) as jasmine.SpyObj<AuthService>;
       fixture.detectChanges();
-      spyOn(console, 'log');
     })
   );
 
@@ -71,7 +81,7 @@ describe('SignInPage', () => {
     expect(elementNode).not.toBeNull();
   });
 
-  it('console.log should be called when form is valid', () => {
+  it('should call signIn method from AuthService on form submit (if form is valid)', () => {
     const email = component.signInForm.get('email');
     const password = component.signInForm.get('password');
     const validEmail = 'test@test.com';
@@ -81,6 +91,9 @@ describe('SignInPage', () => {
     password.setValue(validPassword);
 
     component.onSubmit();
-    expect(console.log).toHaveBeenCalled();
+    expect(authServiceSpy.signIn).toHaveBeenCalledWith({
+      email: validEmail,
+      password: validPassword,
+    });
   });
 });
