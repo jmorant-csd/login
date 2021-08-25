@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { SignInDto } from 'src/app/core/models/auth';
+import { AuthService } from 'src/app/core/services/http/auth.service';
 import { emailValidator } from 'src/app/shared/validators/email-validator.directive';
 
 @Component({
@@ -12,7 +14,10 @@ export class SignInPage implements OnInit {
   isRemindEnabled = false;
   isSubmitButtonClicked = false;
 
-  constructor(private readonly fb: FormBuilder) {}
+  constructor(
+    private readonly authService: AuthService,
+    private readonly fb: FormBuilder
+  ) {}
 
   ngOnInit() {
     this.signInForm = this.fb.group({
@@ -27,8 +32,7 @@ export class SignInPage implements OnInit {
       return;
     }
 
-    console.log('🚀 ~ SignInPage ~ onSubmit ~ OK');
-    const logInDto = this.signInForm.value;
-    // TODO: API call
+    const signInDto: SignInDto = this.signInForm.value;
+    this.authService.signIn(signInDto);
   }
 }
